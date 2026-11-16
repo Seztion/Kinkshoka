@@ -1,0 +1,220 @@
+/* ===== ธีมฟ้าขาว: ดาว ดาวตก ทะเล ===== */
+:root {
+  --sky-top: #a9d8f6;
+  --sky-mid: #d9eefc;
+  --page: #eef8ff;
+  --white: #ffffff;
+  --sea: #8fcff5;
+  --sea-deep: #3f8fd2;
+  --ink: #1f3d63;
+  --ink-soft: #4d6a8c;
+  --star: #fff1b8;
+  --line: #cfe6f7;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans Thai Looped", "Sarabun", sans-serif;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--page);
+}
+
+h1, h2, h3 { font-family: "Mali", "Noto Sans Thai Looped", sans-serif; margin: 0; line-height: 1.3; }
+a { color: var(--sea-deep); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sea-deep); outline-offset: 3px; border-radius: 8px; }
+
+/* ===== ท้องฟ้า ===== */
+.sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+.star {
+  position: absolute;
+  width: 14px; height: 14px;
+  background: var(--star);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  filter: drop-shadow(0 0 4px #ffe48a);
+  animation: twinkle 4s ease-in-out infinite;
+}
+.s1 { top: 8%;  left: 12%; }
+.s2 { top: 14%; left: 78%; width: 10px; height: 10px; animation-delay: -1s; }
+.s3 { top: 22%; left: 40%; width: 18px; height: 18px; animation-delay: -2s; }
+.s4 { top: 30%; left: 90%; animation-delay: -3s; }
+.s5 { top: 46%; left: 6%;  width: 10px; height: 10px; animation-delay: -1.5s; }
+.s6 { top: 58%; left: 70%; width: 16px; height: 16px; animation-delay: -2.5s; }
+.s7 { top: 72%; left: 28%; width: 10px; height: 10px; animation-delay: -0.5s; }
+.s8 { top: 84%; left: 92%; animation-delay: -3.5s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: .35; transform: scale(.8); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ดาวตก: ตกเป็นระยะ ไม่รัวจนรำคาญ */
+.shoot {
+  position: absolute;
+  width: 140px; height: 2px;
+  background: linear-gradient(to left, transparent, #fff);
+  border-radius: 2px;
+  box-shadow: 0 0 8px 1px rgba(255, 255, 255, .9);
+  opacity: 0;
+  animation: shoot 11s linear infinite;
+}
+.shoot::before {
+  content: ""; position: absolute; left: -2px; top: -2px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 10px 3px #fff7cf;
+}
+.sh1 { top: 4%;  left: 70%; }
+.sh2 { top: 12%; left: 95%; animation-delay: 4s; animation-duration: 14s; }
+.sh3 { top: 2%;  left: 45%; animation-delay: 8s; animation-duration: 17s; }
+
+@keyframes shoot {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(-35deg); }
+  2%   { opacity: 1; }
+  9%   { opacity: 0; transform: translate(-520px, 364px) rotate(-35deg); }
+  100% { opacity: 0; transform: translate(-520px, 364px) rotate(-35deg); }
+}
+
+/* ===== ส่วนหัว ===== */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 92vh;
+  display: flex; flex-direction: column;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 70%, var(--page) 100%);
+  overflow: hidden;
+}
+
+.nav {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.5rem;
+  padding: 1.2rem 1rem;
+}
+.nav a { color: var(--ink); text-decoration: none; padding: .2rem .5rem; border-radius: 999px; }
+.nav a:hover { background: rgba(255, 255, 255, .6); }
+
+.hero-body { margin: auto; padding: 2rem 1.25rem 9rem; text-align: center; position: relative; z-index: 2; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 5rem); color: var(--white); text-shadow: 0 2px 0 var(--sea-deep), 0 6px 24px rgba(63, 143, 210, .45); margin: .6rem 0; }
+.tagline { max-width: 32rem; margin: 0 auto 1.6rem; color: var(--ink); }
+
+.status {
+  display: inline-block; margin: 0; padding: .25rem 1rem; border-radius: 999px;
+  background: var(--white); font-weight: 500; font-size: .95rem;
+}
+.status.open { color: #1c8a5a; }
+.status.closed { color: #c2506b; }
+
+.btn {
+  display: inline-block; padding: .7rem 2rem; border-radius: 999px;
+  background: var(--sea-deep); color: var(--white); text-decoration: none; font-weight: 500;
+  box-shadow: 0 6px 18px rgba(63, 143, 210, .35);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(63, 143, 210, .4); }
+
+/* ===== ทะเล (คลื่นเลื่อนช้า ๆ) ===== */
+.sea { position: absolute; left: 0; right: 0; bottom: 0; height: 140px; z-index: 1; }
+.wave {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
+  background-repeat: repeat-x; background-size: 1200px 120px;
+}
+.w1 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0 60 Q150 20 300 60 T600 60 T900 60 T1200 60 V120 H0Z' fill='%238fcff5' fill-opacity='.65'/%3E%3C/svg%3E");
+  animation: drift 22s linear infinite;
+}
+.w2 {
+  height: 90px; background-size: 1200px 90px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 90'%3E%3Cpath d='M0 45 Q150 80 300 45 T600 45 T900 45 T1200 45 V90 H0Z' fill='%23eef8ff'/%3E%3C/svg%3E");
+  animation: drift 32s linear infinite reverse;
+}
+@keyframes drift { to { background-position-x: 1200px; } }
+
+/* ===== เนื้อหา ===== */
+main { position: relative; z-index: 1; max-width: 62rem; margin: 0 auto; padding: 1rem 1.25rem 2rem; }
+
+.panel {
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 1.75rem clamp(1.1rem, 4vw, 2.25rem);
+  margin: 0 0 1.75rem;
+  scroll-margin-top: 1rem;
+}
+.panel h2 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--sea-deep); }
+.panel h2::after { content: " ✦"; color: #f2c94c; font-size: .8em; }
+.note { margin: -.5rem 0 1rem; color: var(--ink-soft); font-size: .9rem; }
+
+/* ประกาศ */
+.news { list-style: none; margin: 0; padding: 0; }
+.news li { padding: .7rem 1rem; margin-bottom: .5rem; background: #f4fbff; border-left: 4px solid var(--sea); border-radius: 0 14px 14px 0; }
+.news b { margin-right: .5rem; color: var(--sea-deep); }
+
+/* แกลเลอรี */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+.work { margin: 0; }
+.work img, .ph {
+  display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 20px; background: linear-gradient(160deg, #e3f3ff, #b9dffa);
+  color: var(--ink-soft); font-size: .9rem; border: 1px solid var(--line);
+}
+.work:nth-child(even) .ph { border-radius: 20px 20px 60px 20px; }
+.work figcaption { padding: .4rem .3rem 0; font-size: .9rem; color: var(--ink-soft); }
+.more { margin: 1.25rem 0 0; }
+
+/* ตารางคิว */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 34rem; }
+th, td { padding: .7rem .8rem; text-align: left; border-bottom: 1px solid var(--line); }
+th { font-weight: 500; color: var(--ink-soft); font-size: .9rem; }
+tbody tr:hover { background: #f4fbff; }
+.tag { display: inline-block; padding: .1rem .8rem; border-radius: 999px; font-size: .85rem; }
+.tag.done   { background: #dff5ea; color: #1c7a52; }
+.tag.draw   { background: #d9ecfd; color: #1f66ad; }
+.tag.sketch { background: #fff3cf; color: #8a6a10; }
+.tag.wait   { background: #eceff4; color: #5b6778; }
+.tag.free   { background: #fff; color: var(--sea-deep); border: 1px dashed var(--sea-deep); }
+
+/* รายละเอียดงาน */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.card { background: #f4fbff; border-radius: 20px; padding: 1.2rem 1.3rem; }
+.card h3 { font-size: 1.15rem; margin-bottom: .5rem; }
+.card ul, .card ol { margin: 0; padding-left: 1.2rem; }
+.card li { margin-bottom: .3rem; }
+
+/* ติดต่อ */
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .9rem; }
+.links a {
+  display: flex; flex-direction: column; padding: 1rem 1.2rem;
+  background: var(--white); border: 1px solid var(--line); border-radius: 18px;
+  text-decoration: none; color: var(--ink); font-weight: 500;
+  transition: border-color .2s, transform .2s;
+}
+.links a:hover { border-color: var(--sea-deep); transform: translateY(-2px); }
+.links small { color: var(--ink-soft); font-weight: 400; }
+
+/* ปุ่มเพลง */
+.music {
+  position: fixed; top: .9rem; right: .9rem; z-index: 10;
+  padding: .45rem 1rem; border: 0; border-radius: 999px; cursor: pointer;
+  background: rgba(255, 255, 255, .9); color: var(--ink); font: inherit; font-size: .9rem;
+  box-shadow: 0 4px 14px rgba(63, 143, 210, .25);
+}
+.music[aria-pressed="true"] { background: var(--sea-deep); color: var(--white); }
+
+/* ท้ายหน้า */
+.foot { position: relative; z-index: 1; margin-top: 3rem; padding: 6rem 1rem 1.5rem; text-align: center; color: var(--ink-soft); font-size: .9rem; background: linear-gradient(180deg, var(--page), #cfe9fb); }
+.foot p { position: relative; z-index: 2; margin: 0; }
+.sea-foot { top: 0; bottom: auto; transform: rotate(180deg); }
+
+@media (max-width: 520px) {
+  .panel { border-radius: 22px; }
+  .hero-body { padding-bottom: 7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star, .shoot, .wave { animation: none; }
+  .shoot { display: none; }
+  html { scroll-behavior: auto; }
+}
