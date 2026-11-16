@@ -1,0 +1,115 @@
+/* ===== ธีมฟ้าขาว: ดาว ดาวตก ทะเล (เวอร์ชันจัดเต็ม) ===== */
+:root{--top:#5aaeea;--mid:#a6d6f6;--low:#d8eefc;--page:#eef8ff;--white:#fff;--deep:#2f7fc4;--ink:#1c3a62;--soft:#4d6a8c;--line:#cfe6f7;--gold:#ffe9a0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans Thai Looped","Sarabun",sans-serif;line-height:1.75;color:var(--ink);background:var(--page)}
+h1,h2,h3{font-family:"Mali","Noto Sans Thai Looped",sans-serif;margin:0;line-height:1.3}
+a{color:var(--deep)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--deep);outline-offset:3px;border-radius:8px}
+
+/* ท้องฟ้า */
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;width:14px;height:14px;background:#fff;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 5px #fff6c8);animation:tw 4s ease-in-out infinite}
+.star.gold{background:var(--gold)}
+.s1{top:8%;left:12%}.s2{top:14%;left:78%;width:10px;height:10px;animation-delay:-1s}.s3{top:22%;left:40%;width:20px;height:20px;animation-delay:-2s}.s4{top:30%;left:90%;animation-delay:-3s}
+.s5{top:46%;left:6%;width:10px;height:10px;animation-delay:-1.5s}.s6{top:58%;left:70%;width:18px;height:18px;animation-delay:-2.5s}.s7{top:72%;left:28%;width:10px;height:10px;animation-delay:-.5s}.s8{top:84%;left:92%;animation-delay:-3.5s}
+@keyframes tw{0%,100%{opacity:.3;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+
+.shoot{position:absolute;width:180px;height:2px;background:linear-gradient(to left,transparent,#fff);border-radius:2px;box-shadow:0 0 10px 2px rgba(255,255,255,.9);opacity:0;animation:sh 9s linear infinite}
+.shoot::before{content:"";position:absolute;left:-3px;top:-3px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 14px 5px #fff3b8}
+.sh1{top:4%;left:75%}.sh2{top:10%;left:98%;animation-delay:3s;animation-duration:11s}.sh3{top:2%;left:50%;animation-delay:6s;animation-duration:13s}
+@keyframes sh{0%{opacity:0;transform:translate(0,0) rotate(-35deg)}2%{opacity:1}12%{opacity:0;transform:translate(-640px,448px) rotate(-35deg)}100%{opacity:0;transform:translate(-640px,448px) rotate(-35deg)}}
+
+/* ส่วนหัว */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;
+background:radial-gradient(circle at 78% 22%,rgba(255,250,220,.95) 0,rgba(255,244,190,.55) 9%,transparent 30%),linear-gradient(180deg,var(--top) 0,var(--mid) 45%,var(--low) 78%,var(--page) 100%)}
+.nav{position:relative;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem .6rem;padding:1.1rem 1rem}
+.nav a{color:var(--ink);text-decoration:none;padding:.3rem 1rem;border-radius:999px;background:rgba(255,255,255,.35);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.6);transition:background .2s,transform .2s}
+.nav a:hover{background:#fff;transform:translateY(-2px)}
+.hero-body{position:relative;z-index:3;margin:auto;padding:2rem 1.25rem 11rem;text-align:center}
+.status{display:inline-block;margin:0;padding:.3rem 1.1rem;border-radius:999px;background:rgba(255,255,255,.9);font-weight:500;font-size:.95rem;box-shadow:0 0 0 6px rgba(255,255,255,.3);animation:pulse 2.6s ease-in-out infinite}
+.status.open{color:#1c8a5a}.status.closed{color:#c2506b}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+.hero h1{font-size:clamp(3rem,12vw,6.5rem);margin:.5rem 0;letter-spacing:.02em;color:#fff;
+background:linear-gradient(100deg,#fff 20%,#fff2b5 45%,#fff 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+filter:drop-shadow(0 4px 0 rgba(47,127,196,.55)) drop-shadow(0 8px 22px rgba(47,127,196,.5));animation:shine 7s ease-in-out infinite}
+@keyframes shine{50%{background-position:100% 0}}
+.tagline{max-width:34rem;margin:0 auto 1.8rem;color:var(--ink);font-size:1.1rem}
+.btn{display:inline-block;padding:.85rem 2.4rem;border-radius:999px;color:#fff;text-decoration:none;font-weight:500;background:linear-gradient(135deg,#59b4f0,#2f7fc4);box-shadow:0 8px 24px rgba(47,127,196,.45),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 30px rgba(47,127,196,.5)}
+
+/* เมฆลอย */
+.cloud{position:absolute;z-index:2;width:200px;height:56px;border-radius:60px;background:rgba(255,255,255,.92);filter:blur(1.5px);animation:cl linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud::before{width:90px;height:90px;left:30px;top:-40px}.cloud::after{width:70px;height:70px;left:100px;top:-28px}
+.c1{top:16%;left:-260px;animation-duration:70s}.c2{top:34%;left:-260px;transform:scale(.7);animation-duration:95s;animation-delay:-40s;opacity:.8}.c3{top:8%;left:-260px;transform:scale(.5);animation-duration:120s;animation-delay:-80s;opacity:.7}
+@keyframes cl{to{translate:calc(100vw + 300px) 0}}
+
+/* ทะเลหลายชั้น + ฟอง */
+.sea{position:absolute;left:0;right:0;bottom:0;height:200px;z-index:2}
+.wave{position:absolute;left:0;right:0;bottom:0;height:150px;background-repeat:repeat-x;background-size:1200px 150px}
+.w1{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 150'%3E%3Cpath d='M0 70 Q150 20 300 70 T600 70 T900 70 T1200 70 V150 H0Z' fill='%2378c4f2' fill-opacity='.7'/%3E%3C/svg%3E");animation:dr 18s linear infinite}
+.w2{height:120px;background-size:1200px 120px;bottom:-4px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0 55 Q150 100 300 55 T600 55 T900 55 T1200 55 V120 H0Z' fill='%23b4def8' fill-opacity='.85'/%3E%3C/svg%3E");animation:dr 26s linear infinite reverse}
+.w3{height:90px;background-size:1200px 90px;bottom:-6px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 90'%3E%3Cpath d='M0 40 Q150 10 300 40 T600 40 T900 40 T1200 40 V90 H0Z' fill='%23eef8ff'/%3E%3C/svg%3E");animation:dr 34s linear infinite}
+@keyframes dr{to{background-position-x:1200px}}
+.bub{position:absolute;bottom:20px;border-radius:50%;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.9);animation:up linear infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-130px);opacity:0}}
+
+/* เนื้อหา: กระจกใส */
+main{position:relative;z-index:1;max-width:64rem;margin:0 auto;padding:1rem 1.25rem 2rem}
+.panel{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(236,247,255,.8));backdrop-filter:blur(8px);border:1px solid #fff;border-radius:32px;padding:2rem clamp(1.1rem,4vw,2.4rem);margin:0 0 2rem;scroll-margin-top:1rem;box-shadow:0 10px 40px rgba(63,143,210,.16),inset 0 0 0 1px var(--line)}
+.panel h2{font-size:1.8rem;margin-bottom:1.1rem;color:var(--deep)}
+.panel h2::before{content:"✦ ";color:#f2c94c}.panel h2::after{content:" ✧";color:#9fd0f3}
+.js .panel{opacity:0;transform:translateY(36px);transition:opacity .9s,transform .9s}
+.js .panel.in{opacity:1;transform:none}
+.note{margin:-.5rem 0 1rem;color:var(--soft);font-size:.9rem}
+
+.news{list-style:none;margin:0;padding:0}
+.news li{padding:.8rem 1.1rem;margin-bottom:.6rem;background:linear-gradient(90deg,#e3f3ff,#fff);border-left:5px solid #7cc4f2;border-radius:0 18px 18px 0}
+.news b{margin-right:.5rem;color:var(--deep)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.1rem}
+.work{margin:0;transition:transform .3s}
+.work:hover{transform:translateY(-6px) rotate(-1deg)}
+.work img,.ph{position:relative;overflow:hidden;display:grid;place-items:center;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;background:linear-gradient(160deg,#eaf6ff,#a9d6f5);color:var(--soft);font-size:.9rem;border:3px solid #fff;box-shadow:0 8px 22px rgba(63,143,210,.25)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%);transform:translateX(-120%);transition:transform .8s}
+.work:hover .ph::after{transform:translateX(120%)}
+.work:nth-child(even) .ph{border-radius:22px 22px 70px 22px}
+.work figcaption{padding:.5rem .3rem 0;font-size:.92rem;color:var(--soft)}
+.more{margin:1.3rem 0 0}
+
+.table-wrap{overflow-x:auto;border-radius:20px}
+table{width:100%;border-collapse:collapse;min-width:34rem}
+th,td{padding:.8rem .9rem;text-align:left;border-bottom:1px solid var(--line)}
+th{font-weight:500;color:#fff;background:linear-gradient(90deg,#5aaeea,#8fcff5);font-size:.92rem}
+tbody tr:hover{background:#eaf6ff}
+.tag{display:inline-block;padding:.1rem .85rem;border-radius:999px;font-size:.85rem}
+.tag.done{background:#dff5ea;color:#1c7a52}.tag.draw{background:#d9ecfd;color:#1f66ad}.tag.sketch{background:#fff3cf;color:#8a6a10}.tag.wait{background:#eceff4;color:#5b6778}.tag.free{background:#fff;color:var(--deep);border:1px dashed var(--deep)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.1rem}
+.card{position:relative;background:#f2faff;border-radius:24px;padding:1.4rem 1.4rem 1.2rem;border:1px solid var(--line);overflow:hidden;transition:transform .3s,box-shadow .3s}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,#8fcff5,#fff1b8,#8fcff5)}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(63,143,210,.2)}
+.card h3{font-size:1.2rem;margin-bottom:.5rem}
+.card ul,.card ol{margin:0;padding-left:1.2rem}.card li{margin-bottom:.3rem}
+
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:1rem}
+.links a{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:1.1rem 1.3rem;background:#fff;border:1px solid var(--line);border-radius:22px;text-decoration:none;color:var(--ink);font-weight:500;transition:transform .25s,border-color .25s,box-shadow .25s}
+.links a::after{content:"✦";position:absolute;right:1rem;top:.8rem;color:#f2c94c;transition:transform .5s}
+.links a:hover{transform:translateY(-4px);border-color:var(--deep);box-shadow:0 12px 24px rgba(63,143,210,.22)}
+.links a:hover::after{transform:rotate(180deg) scale(1.4)}
+.links small{color:var(--soft);font-weight:400}
+
+.music{position:fixed;top:.9rem;right:.9rem;z-index:10;padding:.5rem 1.1rem;border:0;border-radius:999px;cursor:pointer;background:rgba(255,255,255,.92);color:var(--ink);font:inherit;font-size:.9rem;box-shadow:0 4px 16px rgba(63,143,210,.3)}
+.music[aria-pressed="true"]{background:var(--deep);color:#fff}
+
+/* ประกายตามเมาส์ */
+.spark{position:fixed;z-index:20;width:12px;height:12px;pointer-events:none;background:var(--gold);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 4px #fff);animation:sp .9s ease-out forwards}
+@keyframes sp{to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2) rotate(120deg)}}
+
+.foot{position:relative;z-index:1;margin-top:3rem;padding:7rem 1rem 1.5rem;text-align:center;color:var(--soft);font-size:.9rem;background:linear-gradient(180deg,var(--page),#bfe0f8)}
+.foot p{position:relative;z-index:3;margin:0}
+.sea-foot{top:0;bottom:auto;transform:rotate(180deg)}
+
+@media(max-width:520px){.panel{border-radius:24px}.hero-body{padding-bottom:8rem}.cloud{display:none}.c3{display:block}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.shoot,.bub,.cloud{display:none}.js .panel{opacity:1;transform:none}}

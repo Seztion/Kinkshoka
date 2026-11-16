@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ชื่อศิลปิน | รับวาดคอมมิชชัน</title>
+<meta name="description" content="รับวาดคอมมิชชัน ดูผลงาน คิวงาน และช่องทางติดต่อ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&family=Noto+Sans+Thai+Looped:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<!-- ท้องฟ้า: ดาวระยิบ + ดาวตก (ล้วน CSS) -->
+<div class="sky" aria-hidden="true">
+  <i class="star s1"></i><i class="star s2"></i><i class="star s3"></i><i class="star s4"></i>
+  <i class="star s5"></i><i class="star s6"></i><i class="star s7"></i><i class="star s8"></i>
+  <i class="shoot sh1"></i><i class="shoot sh2"></i><i class="shoot sh3"></i>
+</div>
+
+<!-- ปุ่มเปิด/ปิดเพลง (ใส่ไฟล์เพลงที่ music/theme.mp3) -->
+<button class="music" id="music" type="button" aria-pressed="false" aria-label="เปิดเพลงธีม">♪ เปิดเพลง</button>
+<audio id="bgm" src="music/theme.mp3" loop preload="none"></audio>
+
+<header class="hero">
+  <i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i>
+  <nav class="nav" aria-label="เมนูหลัก">
+    <a href="#news">ประกาศ</a>
+    <a href="#works">ผลงาน</a>
+    <a href="#queue">คิวงาน</a>
+    <a href="#info">รายละเอียด</a>
+    <a href="#contact">ติดต่อ</a>
+  </nav>
+  <div class="hero-body">
+    <p class="status open" id="status">● เปิดรับคิว</p>
+    <h1>ชื่อศิลปิน</h1>
+    <p class="tagline">รับวาดคอมมิชชัน ภาพสีอ่อน ๆ โทนฟ้า ใส ๆ เหมือนท้องฟ้ายามเช้า</p>
+    <a class="btn" href="#contact">สั่งงานกับเรา</a>
+  </div>
+  <div class="sea" aria-hidden="true"><div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div></div>
+</header>
+
+<main>
+
+  <!-- ประกาศสำคัญ: แก้ข้อความตรงนี้ -->
+  <section id="news" class="panel">
+    <h2>ประกาศ</h2>
+    <ul class="news">
+      <li><b>16 พ.ย. 2569</b> เปิดรับคิวรอบใหม่ จำนวน 5 คิว</li>
+      <li><b>10 พ.ย. 2569</b> ปิดรับงานชั่วคราว 25–31 ธ.ค. เพราะพักผ่อนช่วงปีใหม่</li>
+      <li><b>ย้ำ</b> ชำระมัดจำก่อนเริ่มงานทุกครั้ง อ่านเงื่อนไขที่หัวข้อ "รายละเอียด" ก่อนสั่ง</li>
+    </ul>
+  </section>
+
+  <!-- ผลงาน: เปลี่ยน .ph เป็น <img src="images/work1.jpg" alt="..."> -->
+  <section id="works" class="panel">
+    <h2>ผลงาน</h2>
+    <div class="gallery">
+      <figure class="work"><div class="ph">ใส่รูปผลงาน 1</div><figcaption>ภาพเต็มตัว</figcaption></figure>
+      <figure class="work"><div class="ph">ใส่รูปผลงาน 2</div><figcaption>ภาพครึ่งตัว</figcaption></figure>
+      <figure class="work"><div class="ph">ใส่รูปผลงาน 3</div><figcaption>ไอคอน</figcaption></figure>
+      <figure class="work"><div class="ph">ใส่รูปผลงาน 4</div><figcaption>ภาพมีฉากหลัง</figcaption></figure>
+      <figure class="work"><div class="ph">ใส่รูปผลงาน 5</div><figcaption>สติกเกอร์</figcaption></figure>
+      <figure class="work"><div class="ph">ใส่รูปผลงาน 6</div><figcaption>ภาพวาดเล่น</figcaption></figure>
+    </div>
+    <p class="more">ดูผลงานเพิ่มเติมที่
+      <a href="https://example.com/portfolio" target="_blank" rel="noopener">Pixiv</a>,
+      <a href="https://example.com/twitter" target="_blank" rel="noopener">X (Twitter)</a>,
+      <a href="https://example.com/ig" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </section>
+
+  <!-- ตารางคิว -->
+  <section id="queue" class="panel">
+    <h2>ตารางคิวงาน</h2>
+    <p class="note">อัปเดตล่าสุด 16 พ.ย. 2569</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>คิว</th><th>ผู้สั่ง</th><th>ประเภทงาน</th><th>สถานะ</th><th>คาดว่าเสร็จ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>คุณ A</td><td>ครึ่งตัว สี</td><td><span class="tag done">เสร็จแล้ว</span></td><td>5 พ.ย.</td></tr>
+          <tr><td>2</td><td>คุณ B</td><td>เต็มตัว สี</td><td><span class="tag draw">กำลังวาด</span></td><td>20 พ.ย.</td></tr>
+          <tr><td>3</td><td>คุณ C</td><td>ไอคอน</td><td><span class="tag sketch">ร่างแบบ</span></td><td>28 พ.ย.</td></tr>
+          <tr><td>4</td><td>คุณ D</td><td>สติกเกอร์ 4 ท่า</td><td><span class="tag wait">รอคิว</span></td><td>ธ.ค.</td></tr>
+          <tr><td>5</td><td>ว่าง</td><td>—</td><td><span class="tag free">เปิดจอง</span></td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- รายละเอียดงาน -->
+  <section id="info" class="panel">
+    <h2>รายละเอียดงาน</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>ราคา</h3>
+        <ul>
+          <li>ไอคอน <b>300 บาท</b></li>
+          <li>ครึ่งตัว <b>600 บาท</b></li>
+          <li>เต็มตัว <b>900 บาท</b></li>
+          <li>เพิ่มฉากหลัง <b>+300 บาท</b></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>ขั้นตอน</h3>
+        <ol>
+          <li>ทักแจ้งรายละเอียดและรูปอ้างอิง</li>
+          <li>ตกลงราคา แล้วโอนมัดจำ 50%</li>
+          <li>ส่งร่างให้ดู แก้ได้ 2 ครั้ง</li>
+          <li>ลงสีและส่งไฟล์ หลังชำระส่วนที่เหลือ</li>
+        </ol>
+      </article>
+      <article class="card">
+        <h3>เงื่อนไข</h3>
+        <ul>
+          <li>ใช้ส่วนตัวได้ ใช้เชิงพาณิชย์ต้องแจ้งก่อน</li>
+          <li>ขอนำภาพไปลงเป็นผลงานได้</li>
+          <li>ไม่รับ NSFW, งานเลียนแบบ, งานที่แก้ซ้ำหลายรอบ</li>
+          <li>ยกเลิกหลังเริ่มลงสี ไม่คืนมัดจำ</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ช่องทางติดต่อ -->
+  <section id="contact" class="panel">
+    <h2>ช่องทางติดต่อ</h2>
+    <div class="links">
+      <a href="https://example.com/twitter" target="_blank" rel="noopener">X (Twitter)<small>@yourname</small></a>
+      <a href="https://example.com/line" target="_blank" rel="noopener">LINE<small>@yourline</small></a>
+      <a href="https://example.com/ig" target="_blank" rel="noopener">Instagram<small>@yourname</small></a>
+      <a href="mailto:you@example.com">อีเมล<small>you@example.com</small></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="sea sea-foot" aria-hidden="true"><div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div></div>
+  <p>© 2026 ชื่อศิลปิน · ห้ามนำภาพไปใช้โดยไม่ได้รับอนุญาต</p>
+</footer>
+
+<script>
+  // ปุ่มเปิด/ปิดเพลง (เบราว์เซอร์ไม่อนุญาตให้เล่นเองอัตโนมัติ ต้องกดปุ่ม)
+  var bgm = document.getElementById('bgm');
+  var btn = document.getElementById('music');
+  bgm.volume = 0.4;
+  btn.addEventListener('click', function () {
+    var on = btn.getAttribute('aria-pressed') === 'true';
+    if (on) { bgm.pause(); } else { bgm.play().catch(function () {}); }
+    btn.setAttribute('aria-pressed', String(!on));
+    btn.textContent = on ? '♪ เปิดเพลง' : '♪ ปิดเพลง';
+  });
+
+  // ===== ลูกเล่นเวอร์ ๆ =====
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var r = function (a, b) { return a + Math.random() * (b - a); };
+  // ดาวเพิ่มอีก 36 ดวง
+  var sky = document.querySelector('.sky');
+  for (var i = 0; i < 36; i++) {
+    var st = document.createElement('i');
+    st.className = 'star' + (i % 3 === 0 ? ' gold' : '');
+    var z = r(6, 16);
+    st.style.cssText = 'top:' + r(1, 98) + '%;left:' + r(1, 98) + '%;width:' + z + 'px;height:' + z + 'px;animation-delay:-' + r(0, 5) + 's;animation-duration:' + r(3, 6) + 's';
+    sky.appendChild(st);
+  }
+  // ฟองในทะเล
+  var sea = document.querySelector('.hero .sea');
+  if (!calm) for (var j = 0; j < 14; j++) {
+    var b = document.createElement('i');
+    b.className = 'bub';
+    var d = r(5, 12);
+    b.style.cssText = 'left:' + r(2, 98) + '%;width:' + d + 'px;height:' + d + 'px;animation-duration:' + r(5, 10) + 's;animation-delay:-' + r(0, 8) + 's';
+    sea.appendChild(b);
+  }
+  // กล่องเนื้อหาค่อย ๆ ลอยขึ้นมาตอนเลื่อนถึง
+  var panels = document.querySelectorAll('.panel');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    panels.forEach(function (p) { io.observe(p); });
+  } else { panels.forEach(function (p) { p.classList.add('in'); }); }
+  // ประกายดาวตามเมาส์/นิ้ว
+  var last = 0;
+  if (!calm) window.addEventListener('pointermove', function (e) {
+    var t = Date.now(); if (t - last < 60) return; last = t;
+    var sp = document.createElement('i');
+    sp.className = 'spark';
+    sp.style.cssText = 'left:' + e.clientX + 'px;top:' + e.clientY + 'px;--dx:' + r(-30, 30) + 'px;--dy:' + r(10, 45) + 'px';
+    document.body.appendChild(sp);
+    setTimeout(function () { sp.remove(); }, 900);
+  });
+</script>
+</body>
+</html>
